@@ -1,4 +1,4 @@
 import requests
 
-APP_ID: str = '41740855'
-APP_KEY: str = '89f26bc4447620e5e125e6ec535e08d7'
+APP_ID: str = 'af3c9ccd'
+APP_KEY: str = 'e416cbba2d1a1f6e1d02b2a513120f8e'
