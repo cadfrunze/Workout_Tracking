@@ -9,7 +9,7 @@ header: dict = {
 
 }
 
-mesaj: str = input('say: ')
+mesaj: str = input('Tell me which exercises you did: ')
 body_endpoint: dict = {
     'query': mesaj,
     'gender': 'male',
@@ -18,11 +18,7 @@ body_endpoint: dict = {
     'age': '38'
 }
 
-
-while True:
-    raspuns_exercitiu = requests.post(url=URL_END_P,
-                                      headers=header, json=body_endpoint)
-    raspuns_exercitiu.raise_for_status()
-    print(raspuns_exercitiu.json())
-    mesaj: str = input('say: ')
-    body_endpoint['query'] = mesaj
+raspuns_exercitiu = requests.post(url=URL_END_P,
+                                  headers=header, json=body_endpoint)
+raspuns_exercitiu.raise_for_status()
+print(raspuns_exercitiu.json())
