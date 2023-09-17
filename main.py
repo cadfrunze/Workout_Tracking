@@ -43,7 +43,7 @@ print(setari_foaie_sheet)
 end_point: str = 'https://api.sheety.co/84e3d01b8e36c55e4d7a081710112b16/testing/workouts'
 
 header_sheety: dict = {
-'Content-Type': 'application/json',
+    'Content-Type': 'application/json',
     'Authorization': 'Bearer testare'
 }
 # cerere_get = requests.get(url=end_point, headers=header_sheety)
