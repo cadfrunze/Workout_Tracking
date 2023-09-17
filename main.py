@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 APP_ID: str = 'af3c9ccd'
 APP_KEY: str = 'e416cbba2d1a1f6e1d02b2a513120f8e'
@@ -21,4 +22,32 @@ body_endpoint: dict = {
 raspuns_exercitiu = requests.post(url=URL_END_P,
                                   headers=header, json=body_endpoint)
 raspuns_exercitiu.raise_for_status()
-print(raspuns_exercitiu.json())
+raspuns_final: dict = raspuns_exercitiu.json()['exercises'][0]
+
+
+setari_foaie_sheet: dict = {
+    'workout': {
+        'Date': datetime.now().strftime('%d/%m/%Y'),
+        'Time': datetime.now().strftime('%H:%M:%S'),
+    }
+}
+for (keya, valoarea) in raspuns_final.items():
+    if keya == 'duration_min':
+        setari_foaie_sheet['workout']['Duration'] = str(valoarea)
+    elif keya == 'nf_calories':
+        setari_foaie_sheet['workout']['Calories'] = str(valoarea)
+    elif keya == 'name':
+        setari_foaie_sheet['workout']['Exercise'] = str(valoarea).title()
+
+print(setari_foaie_sheet)
+end_point: str = 'https://api.sheety.co/84e3d01b8e36c55e4d7a081710112b16/testing/workouts'
+
+header_sheety: dict = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer testare'
+}
+# cerere_get = requests.get(url=end_point, headers=header_sheety)
+# print(cerere_get.text)
+cerere_post = requests.post(url=end_point, json=setari_foaie_sheet, headers=header_sheety)
+cerere_post.raise_for_status()
+print(cerere_post.text)

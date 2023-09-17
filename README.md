@@ -2,4 +2,4 @@ Urmarire/cronmetrare calorii exercitii fizice
 
 API-uri:
 1. https://www.nutritionix.com
-2. 
+2. https://sheety.co/
