@@ -27,23 +27,23 @@ raspuns_final: dict = raspuns_exercitiu.json()['exercises'][0]
 
 setari_foaie_sheet: dict = {
     'workout': {
-        'Date': datetime.now().strftime('%d/%m/%Y'),
-        'Time': datetime.now().strftime('%H:%M:%S'),
+        'date': datetime.now().strftime('%d/%m/%Y'),
+        'time': datetime.now().strftime('%H:%M:%S'),
     }
 }
 for (keya, valoarea) in raspuns_final.items():
     if keya == 'duration_min':
-        setari_foaie_sheet['workout']['Duration'] = str(valoarea)
+        setari_foaie_sheet['workout']['duration'] = str(valoarea)
     elif keya == 'nf_calories':
-        setari_foaie_sheet['workout']['Calories'] = str(valoarea)
+        setari_foaie_sheet['workout']['calories'] = str(valoarea)
     elif keya == 'name':
-        setari_foaie_sheet['workout']['Exercise'] = str(valoarea).title()
+        setari_foaie_sheet['workout']['exercise'] = str(valoarea).title()
 
 print(setari_foaie_sheet)
 end_point: str = 'https://api.sheety.co/84e3d01b8e36c55e4d7a081710112b16/testing/workouts'
 
 header_sheety: dict = {
-    'Content-Type': 'application/json',
+'Content-Type': 'application/json',
     'Authorization': 'Bearer testare'
 }
 # cerere_get = requests.get(url=end_point, headers=header_sheety)
