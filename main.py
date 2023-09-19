@@ -1,11 +1,12 @@
 import requests
+import os
 from datetime import datetime
 
-APP_ID: str = 'af3c9ccd'
-APP_KEY_NUTRINIONIX: str = 'e416cbba2d1a1f6e1d02b2a513120f8e'
-URL_END_P: str = 'https://trackapi.nutritionix.com/v2/natural/exercise'
-APP_KEY_SHEETY: str = '84e3d01b8e36c55e4d7a081710112b16'
-AUTORIZATION_SHEETY: str = 'Bearer testare'
+APP_ID = os.environ.get('APP_ID')
+APP_KEY_NUTRINIONIX = os.environ.get('APP_KEY_NUTRINIONIX')
+URL_END_P = os.environ.get('URL_END_P')
+APP_KEY_SHEETY = os.environ.get('APP_KEY_SHEETY')
+AUTORIZATION_SHEETY = os.environ.get('AUTORIZATION_SHEETY')
 
 header: dict = {
     'x-app-id': APP_ID,
