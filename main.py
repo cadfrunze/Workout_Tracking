@@ -2,11 +2,14 @@ import requests
 from datetime import datetime
 
 APP_ID: str = 'af3c9ccd'
-APP_KEY: str = 'e416cbba2d1a1f6e1d02b2a513120f8e'
+APP_KEY_NUTRINIONIX: str = 'e416cbba2d1a1f6e1d02b2a513120f8e'
 URL_END_P: str = 'https://trackapi.nutritionix.com/v2/natural/exercise'
+APP_KEY_SHEETY: str = '84e3d01b8e36c55e4d7a081710112b16'
+AUTORIZATION_SHEETY: str = 'Bearer testare'
+
 header: dict = {
     'x-app-id': APP_ID,
-    'x-app-key': APP_KEY,
+    'x-app-key': APP_KEY_NUTRINIONIX,
 
 }
 
@@ -39,15 +42,12 @@ for (keya, valoarea) in raspuns_final.items():
     elif keya == 'name':
         setari_foaie_sheet['workout']['exercise'] = str(valoarea).title()
 
-print(setari_foaie_sheet)
-end_point: str = 'https://api.sheety.co/84e3d01b8e36c55e4d7a081710112b16/testing/workouts'
+end_point: str = f'https://api.sheety.co/{APP_KEY_SHEETY}/testing/workouts'
 
 header_sheety: dict = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer testare'
+    'Authorization': AUTORIZATION_SHEETY
 }
-# cerere_get = requests.get(url=end_point, headers=header_sheety)
-# print(cerere_get.text)
+
 cerere_post = requests.post(url=end_point, json=setari_foaie_sheet, headers=header_sheety)
 cerere_post.raise_for_status()
-print(cerere_post.text)
